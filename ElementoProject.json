@@ -69,6 +69,7 @@
               "kind": "Button",
               "properties": {
                 "content": "Save",
+                "appearance": "outline",
                 "action": {
                   "expr": "Add(Things, Record(\"NumberPrepared\", Howmany))"
                 }
@@ -95,7 +96,7 @@
               "kind": "Text",
               "properties": {
                 "content": {
-                  "expr": "'Result  = ' + ServerAppConnector1.Plus(NumberA, NumberB)"
+                  "expr": "'Result  = ' + ServerApp1.Plus(NumberA, NumberB)"
                 }
               },
               "elements": []
@@ -124,6 +125,7 @@
               "kind": "Button",
               "properties": {
                 "content": "Refresh Greeting",
+                "appearance": "outline",
                 "action": {
                   "expr": "ServerApp1.Refresh('Greet')"
                 }
@@ -136,7 +138,7 @@
               "kind": "Data",
               "properties": {
                 "initialValue": {
-                  "expr": "ServerAppConnector1.GetWidget('w3')"
+                  "expr": "ServerApp1.GetWidget('w3')"
                 },
                 "display": true
               },
@@ -166,8 +168,9 @@
               "kind": "Button",
               "properties": {
                 "content": "Update Widget",
+                "appearance": "outline",
                 "action": {
-                  "expr": "ServerAppConnector1.UpdateWidget('w3', Record('a', Widgetavalue))"
+                  "expr": "ServerApp1.UpdateWidget('w3', Record('a', Widgetavalue))"
                 }
               },
               "elements": []
@@ -201,6 +204,7 @@
               "kind": "Button",
               "properties": {
                 "content": "Update Widget Direct",
+                "appearance": "outline",
                 "action": {
                   "expr": "Widgets.Update('w3', Record('a', Widgetavalue))"
                 }
