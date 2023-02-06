@@ -1,0 +1,386 @@
+{
+  "id": "project_1",
+  "name": "Deploy Function Test",
+  "kind": "Project",
+  "properties": {},
+  "elements": [
+    {
+      "id": "firebasepublish_1",
+      "name": "Publisher tree-watcher ",
+      "kind": "FirebasePublish",
+      "properties": {
+        "firebaseProject": "tree-watcher"
+      },
+      "elements": []
+    },
+    {
+      "id": "app1",
+      "name": "Client App",
+      "kind": "App",
+      "properties": {},
+      "elements": [
+        {
+          "id": "page_1",
+          "name": "Main Page",
+          "kind": "Page",
+          "properties": {},
+          "elements": [
+            {
+              "id": "userlogon_1",
+              "name": "User Logon 1",
+              "kind": "UserLogon",
+              "properties": {},
+              "elements": []
+            },
+            {
+              "id": "text1_3",
+              "name": "Title",
+              "kind": "Text",
+              "properties": {
+                "content": {
+                  "expr": "\"Save something\""
+                },
+                "fontSize": 24
+              }
+            },
+            {
+              "id": "numberinput_1",
+              "name": "How many",
+              "kind": "NumberInput",
+              "properties": {
+                "label": "How many of them?"
+              },
+              "elements": []
+            },
+            {
+              "id": "text_1",
+              "name": "Text 1",
+              "kind": "Text",
+              "properties": {
+                "content": {
+                  "expr": "\"I will save \" + Howmany + \" of them\""
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "button_1",
+              "name": "Save Button",
+              "kind": "Button",
+              "properties": {
+                "content": "Save",
+                "action": {
+                  "expr": "Add(Things, Record(\"NumberPrepared\", Howmany))"
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "numberinput_2",
+              "name": "Number A",
+              "kind": "NumberInput",
+              "properties": {},
+              "elements": []
+            },
+            {
+              "id": "numberinput_3",
+              "name": "Number B",
+              "kind": "NumberInput",
+              "properties": {},
+              "elements": []
+            },
+            {
+              "id": "text_2",
+              "name": "The Sum",
+              "kind": "Text",
+              "properties": {
+                "content": {
+                  "expr": "'Result  = ' + ServerAppConnector1.Plus(NumberA, NumberB)"
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "textinput_2",
+              "name": "Name To Greet",
+              "kind": "TextInput",
+              "properties": {},
+              "elements": []
+            },
+            {
+              "id": "text_5",
+              "name": "The Greeting",
+              "kind": "Text",
+              "properties": {
+                "content": {
+                  "expr": "\"Greeting: \" + ServerApp1.Greet(NameToGreet) + \" Local user\" + (CurrentUser()? CurrentUser().Name : \"\") + \" \" + (CurrentUser()? CurrentUser().Email : \"\")"
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "button_4",
+              "name": "Refresh Greeting",
+              "kind": "Button",
+              "properties": {
+                "content": "Refresh Greeting",
+                "action": {
+                  "expr": "ServerApp1.Refresh('Greet')"
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "data_1",
+              "name": "The Widget",
+              "kind": "Data",
+              "properties": {
+                "initialValue": {
+                  "expr": "ServerAppConnector1.GetWidget('w3')"
+                },
+                "display": true
+              },
+              "elements": []
+            },
+            {
+              "id": "text_3",
+              "name": "Widget a text direct",
+              "kind": "Text",
+              "properties": {
+                "content": {
+                  "expr": "\"Widget a from direct is: \" + TheWidget.a"
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "textinput_1",
+              "name": "Widget a value",
+              "kind": "TextInput",
+              "properties": {},
+              "elements": []
+            },
+            {
+              "id": "button_2",
+              "name": "Update Widget",
+              "kind": "Button",
+              "properties": {
+                "content": "Update Widget",
+                "action": {
+                  "expr": "ServerAppConnector1.UpdateWidget('w3', Record('a', Widgetavalue))"
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "data_2",
+              "name": "The Direct Widget",
+              "kind": "Data",
+              "properties": {
+                "initialValue": {
+                  "expr": "Widgets.Get('w3')"
+                },
+                "display": true
+              },
+              "elements": []
+            },
+            {
+              "id": "text_4",
+              "name": "Widget a text",
+              "kind": "Text",
+              "properties": {
+                "content": {
+                  "expr": "\"Widget a is: \" + TheDirectWidget.a"
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "button_3",
+              "name": "Update Widget Direct",
+              "kind": "Button",
+              "properties": {
+                "content": "Update Widget Direct",
+                "action": {
+                  "expr": "Widgets.Update('w3', Record('a', Widgetavalue))"
+                }
+              },
+              "elements": []
+            }
+          ]
+        },
+        {
+          "id": "memorydatastore_1",
+          "name": "Store 1",
+          "kind": "MemoryDataStore",
+          "properties": {},
+          "elements": []
+        },
+        {
+          "id": "collection_1",
+          "name": "Things",
+          "kind": "Collection",
+          "properties": {
+            "dataStore": {
+              "expr": "Store1"
+            },
+            "collectionName": "Things"
+          },
+          "elements": []
+        },
+        {
+          "id": "serverappconnector_1",
+          "name": "Server App 1",
+          "kind": "ServerAppConnector",
+          "properties": {
+            "serverApp": {
+              "expr": "ServerApp1"
+            }
+          },
+          "elements": []
+        },
+        {
+          "id": "firestoredatastore_2",
+          "name": "Data Store 1",
+          "kind": "FirestoreDataStore",
+          "properties": {
+            "collections": "Widgets"
+          },
+          "elements": []
+        },
+        {
+          "id": "collection_3",
+          "name": "Widgets",
+          "kind": "Collection",
+          "properties": {
+            "dataStore": {
+              "expr": "DataStore1"
+            },
+            "collectionName": "Widgets"
+          },
+          "elements": []
+        }
+      ]
+    },
+    {
+      "id": "serverapp_1",
+      "name": "Server App 1",
+      "kind": "ServerApp",
+      "properties": {},
+      "elements": [
+        {
+          "id": "function_7",
+          "name": "Greet",
+          "kind": "Function",
+          "properties": {
+            "input1": "name",
+            "calculation": {
+              "expr": "\"Oh,  \" + name + \" - nice to see you again! (from \" + CurrentUser()?.Name + \" \" +  CurrentUser()?.Email + \")\""
+            }
+          },
+          "elements": []
+        },
+        {
+          "id": "function_1",
+          "name": "Plus",
+          "kind": "Function",
+          "properties": {
+            "input1": "a",
+            "input2": "b",
+            "calculation": {
+              "expr": "Sum(a, b)"
+            }
+          },
+          "elements": []
+        },
+        {
+          "id": "function_2",
+          "name": "Mult",
+          "kind": "Function",
+          "properties": {
+            "input1": "a",
+            "input2": "b",
+            "calculation": {
+              "expr": "a * b"
+            }
+          },
+          "elements": []
+        },
+        {
+          "id": "function_3",
+          "name": "Total",
+          "kind": "Function",
+          "properties": {
+            "input1": "a",
+            "input2": "b",
+            "calculation": {
+              "expr": "Plus(Mult(a, b), c)"
+            },
+            "input3": "c"
+          },
+          "elements": []
+        },
+        {
+          "id": "function_4",
+          "name": "Conc",
+          "kind": "Function",
+          "properties": {
+            "input1": "s1",
+            "input2": "s2",
+            "calculation": {
+              "expr": "\"\" + s1 + s2"
+            }
+          },
+          "elements": []
+        },
+        {
+          "id": "function_5",
+          "name": "Get Widget",
+          "kind": "Function",
+          "properties": {
+            "input1": "id",
+            "calculation": {
+              "expr": "Get(Widgets, id)"
+            }
+          },
+          "elements": []
+        },
+        {
+          "id": "function_6",
+          "name": "Update Widget",
+          "kind": "Function",
+          "properties": {
+            "action": true,
+            "input1": "id",
+            "input2": "changes",
+            "calculation": {
+              "expr": "Update(Widgets, id, changes)"
+            }
+          },
+          "elements": []
+        },
+        {
+          "id": "collection_2",
+          "name": "Widgets",
+          "kind": "Collection",
+          "properties": {
+            "collectionName": "Widgets",
+            "dataStore": {
+              "expr": "DataStore1"
+            }
+          },
+          "elements": []
+        },
+        {
+          "id": "firestoredatastore_1",
+          "name": "Data Store 1",
+          "kind": "FirestoreDataStore",
+          "properties": {
+            "collections": "Widgets"
+          },
+          "elements": []
+        }
+      ]
+    }
+  ]
+}
