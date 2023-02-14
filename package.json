@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "firebase-tools": "^11.22.0"
+  }
+}
