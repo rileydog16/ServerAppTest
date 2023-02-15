@@ -13,6 +13,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18.14.0
+      - run: npm install
       - uses: google-github-actions/auth@v1
         with:
           credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
@@ -20,6 +21,5 @@ jobs:
       - name: List files in the repository
         run: |
           ls -lR ${{ github.workspace }}
-      - run: npm install
       - run: ./scripts/deploy.sh
 
